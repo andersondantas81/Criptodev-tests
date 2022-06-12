@@ -50,11 +50,10 @@ contract CryptoToken is IERC20 {
         return addressToBalance[tokenOwner];
     }
 
-    //FIX: Ta feio, podemos melhorar
     function transfer(address receiver, uint256 quantity) public override returns(bool) {
         require(quantity <= addressToBalance[msg.sender], "Insufficient Balance to Transfer");
-        addressToBalance[msg.sender] = addressToBalance[msg.sender] - quantity;
-        addressToBalance[receiver] = addressToBalance[receiver] + quantity;
+        addressToBalance[msg.sender] -= quantity;
+        addressToBalance[receiver] += quantity;
 
         emit Transfer(msg.sender, receiver, quantity);
         return true;

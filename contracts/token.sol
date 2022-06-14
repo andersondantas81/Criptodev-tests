@@ -13,9 +13,7 @@ interface IERC20 {
     //function allowence(address owner, address spender) external view returns(uint256);
     //function approve(address spender, uint256 amount) external returns(bool);
     //function transferFrom(address sender, address recipient, uint256 amount) external returns(bool);
-
-    //Implementado
-    event Transfer(address from, address to, uint256 value);
+    
 
     //Não está implementado (ainda)
     //event Approval(address owner, address spender, uint256 value);
@@ -33,7 +31,7 @@ contract CryptoToken is IERC20 {
     mapping(address => uint256) private addressToBalance;
 
     // Events
-    //event Transfer(address sender, address receiver, uint256 amount);
+    event Transfer(address from, address to, uint256 value);
  
     //Constructor
     constructor(uint256 total) {
